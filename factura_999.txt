@@ -1,0 +1,5 @@
+Factura: 999
+Fecha: 2010-05-25
+Cliente: 3
+Observaciones: 
+Total: 640000.0

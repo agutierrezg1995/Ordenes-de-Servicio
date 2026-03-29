@@ -1,0 +1,5 @@
+Factura: F78
+Fecha: 2015-10-25
+Cliente: 1
+Observaciones: 
+Total: 700000.0

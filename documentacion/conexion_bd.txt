@@ -1,0 +1,66 @@
+# Paso a paso para conectar la base de datos
+
+1. **Configurar la base de datos:**
+   - Crear la base de datos en MySQL con el nombre `factura_reporte`.
+   - Crear las tablas necesarias (`clientes`, `detalle_factura`, `facturas`, `productos`).
+
+2. **Agregar el conector MySQL:**
+   - Descargar el archivo JAR del conector MySQL desde [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/).
+   - Agregar el archivo JAR al proyecto en NetBeans:
+     - Haz clic derecho en el proyecto.
+     - Selecciona `Propiedades`.
+     - Ve a `Bibliotecas` y haz clic en `Agregar JAR/Carpeta`.
+     - Selecciona el archivo JAR del conector MySQL.
+
+3. **Crear la clase de conexión:**
+   - En el paquete `dao`, crear una clase llamada `ConexionBD.java`.
+   - Implementar el siguiente código:
+
+```java
+package factura.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class ConexionBD {
+    private static final String URL = "jdbc:mysql://localhost:3306/factura_reporte";
+    private static final String USUARIO = "root"; // Cambiar si tu usuario es diferente
+    private static final String CONTRASENA = ""; // Cambiar si tienes contraseña
+
+    public static Connection obtenerConexion() throws SQLException {
+        return DriverManager.getConnection(URL, USUARIO, CONTRASENA);
+    }
+}
+```
+
+4. **Probar la conexión:**
+   - Crear una clase de prueba en el paquete `dao`.
+   - Implementar el siguiente código:
+
+```java
+package factura.dao;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public class PruebaConexion {
+    public static void main(String[] args) {
+        try {
+            Connection conexion = ConexionBD.obtenerConexion();
+            System.out.println("Conexión exitosa");
+            conexion.close();
+        } catch (SQLException e) {
+            System.out.println("Error de conexión: " + e.getMessage());
+        }
+    }
+}
+```
+
+5. **Ejecutar la prueba:**
+   - Ejecutar la clase `PruebaConexion`.
+   - Verificar que la conexión sea exitosa.
+
+---
+
+**Nota:** Asegúrate de que el servidor MySQL esté ejecutándose y que los datos de conexión sean correctos.

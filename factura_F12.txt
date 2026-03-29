@@ -1,0 +1,5 @@
+Factura: F12
+Fecha: 0008-10-25
+Cliente: 1
+Observaciones: 
+Total: 2500000.0
